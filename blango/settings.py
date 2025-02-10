@@ -27,7 +27,7 @@ class Dev(Configuration):
     # SECURITY WARNING: don't run with debug turned on in production!
     DEBUG = True
 
-    ALLOWED_HOSTS = []
+    ALLOWED_HOSTS = ['*']
 
 
     # Application definition
@@ -42,6 +42,7 @@ class Dev(Configuration):
         'blog',
         'crispy_forms',
         'crispy_bootstrap5',
+        'blango_auth',
     ]
 
     MIDDLEWARE = [
@@ -129,6 +130,7 @@ class Dev(Configuration):
 
     CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
     CRISPY_TEMPLATE_PACK = "bootstrap5"
+    AUTH_USER_MODEL = "blango_auth.User"
     
 class Prod(Dev):
     DEBUG = False
