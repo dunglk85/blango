@@ -131,6 +131,9 @@ class Dev(Configuration):
     CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
     CRISPY_TEMPLATE_PACK = "bootstrap5"
     AUTH_USER_MODEL = "blango_auth.User"
+    EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+    ACCOUNT_ACTIVATION_DAYS = 7
+    # REGISTRATION_OPEN = False
     
 class Prod(Dev):
     DEBUG = False

@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load blog_extras %}
+{% block title %}Blango Profile{% endblock %}
+{% block content %}
+    {% row %}
+        {% col %}
+            <p>Logged in as {{ request.user }}.</p>
+            <form action="{% url 'logout' %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-link text-decoration-none">Log Out</button>
+            </form>
+        {% endcol %}
+    {% endrow %}
+{% endblock content %}
