@@ -54,7 +54,8 @@ class Dev(Configuration):
         'crispy_bootstrap5',
         'blango_auth',
         'rest_framework',
-        'rest_framework.authtoken'
+        'rest_framework.authtoken',
+        'drf_yasg'
     ]
 
     MIDDLEWARE = [
@@ -146,6 +147,13 @@ class Dev(Configuration):
     EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
     ACCOUNT_ACTIVATION_DAYS = 7
     # REGISTRATION_OPEN = False
+    
+    SWAGGER_SETTINGS = {
+        "SECURITY_DEFINITIONS": {
+            "Token": {"type": "apiKey", "name": "Authorization", "in": "header"},
+            "Basic": {"type": "basic"},
+        }
+    }
     
 class Prod(Dev):
     DEBUG = False
