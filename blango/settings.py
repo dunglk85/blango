@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 from configurations import values, Configuration
-import dj_database_url
+
 class Dev(Configuration):
     # Build paths inside the project like this: BASE_DIR / 'subdir'.
     BASE_DIR = Path(__file__).resolve().parent.parent
@@ -31,6 +31,13 @@ class Dev(Configuration):
 
 
     # Application definition
+    REST_FRAMEWORK = {
+        "DEFAULT_AUTHENTICATION_CLASSES": [
+            "rest_framework.authentication.BasicAuthentication",
+            "rest_framework.authentication.SessionAuthentication",
+            "rest_framework.authentication.TokenAuthentication",
+        ]
+    }
 
     INSTALLED_APPS = [
         'django.contrib.admin',
@@ -43,7 +50,8 @@ class Dev(Configuration):
         'crispy_forms',
         'crispy_bootstrap5',
         'blango_auth',
-        'rest_framework'
+        'rest_framework',
+        'rest_framework.authtoken'
     ]
 
     MIDDLEWARE = [
